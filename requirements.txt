@@ -4,3 +4,5 @@ openai
 chromadb
 tiktoken
 langdetect
+langchain_openai
+langchain_community
