@@ -4,13 +4,17 @@ Inspired by https://blog.streamlit.io/langchain-tutorial-4-build-an-ask-the-doc-
 ### What is a Work Holiday Visa (WHV)?
 A Work Holiday Visa is a temporary visa that allows young people from eligible countries to travel and work in Australia for a period of up to one year. It's designed to encourage cultural exchange and provide an opportunity for young people to experience living and working in Australia.
 ### Growing Interest in WHV Australia
+<img width="621" alt="Screenshot 2024-04-25 at 08 12 02" src="https://github.com/raziiabraham/whv_qna/assets/32261656/16dd1b01-f42b-4316-97f9-990f52dfa292">
+
 There has been a growing interest in obtaining a Work Holiday Visa for Australia among Indonesian youth. This is evident from the increasing search trends on Google, as well as the high engagement rates on TikTok and Instagram content related to WHV Australia, especially after the Covid-19 pandemic.
 The idea of exploring Australia while earning Australian dollars is highly appealing to many Indonesians. Moreover, the Australian government has been increasing the quota for Indonesian Work Holiday Visa applicants year by year, further fueling this interest.
 
 ---
 
 ## Problem Statement
-Language Barrier and Misleading Information
+### Language Barrier and Misleading Information
+<img width="628" alt="Screenshot 2024-04-25 at 08 13 48" src="https://github.com/raziiabraham/whv_qna/assets/32261656/1793fac8-6d9f-4981-890b-0b17eb10383b">
+
 One of the significant challenges faced by Indonesian applicants is the difficulty in understanding the official information provided by the Australian Department of Home Affairs (immi.gov.au) due to language barriers and the lack of English proficiency.
 
 As a result, many Indonesians rely heavily on information shared by social media influencers and content creators. However, this information can sometimes be misleading or inaccurate, as it is not coming from professional or authoritative sources.
