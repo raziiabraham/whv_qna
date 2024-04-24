@@ -8,13 +8,10 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
-from dotenv import load_dotenv
-import os
 from pathlib import Path
 
-# Load the OpenAI API key from .env file
-load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
+# Access the OpenAI API key from secrets.toml
+openai_api_key = st.secrets["openai"]["api_key"]
 
 def generate_response(openai_api_key, query_text):
     # Prepares the system prompt for Bahasa Indonesia responses
@@ -55,4 +52,4 @@ query_text = st.text_input('Question / Pertanyaan:', placeholder='Please provide
 if query_text:
     with st.spinner('Sedang mencari jawaban...'):
         response = generate_response(openai_api_key, query_text)
-    st.info(response if response else "Mohon maaf saya tidak bisa menjawab peternyaan tersebut, mohon menanykan hal yang lain.")
+    st.info(response if response else "Mohon maaf saya tidak bisa menjawab pertanyaan tersebut, mohon menanyakan hal yang lain.")
