@@ -6,3 +6,4 @@ tiktoken
 langdetect
 langchain_openai
 langchain_community
+pysqlite3-binary
