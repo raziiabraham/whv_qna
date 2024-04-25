@@ -4,7 +4,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import sqlite3
 import streamlit as st
 from langchain_openai import OpenAI
-from langchain.text_splitter import CharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.chains import RetrievalQA
@@ -15,7 +15,7 @@ openai_api_key = st.secrets["openai"]["api_key"]
 
 def generate_response(openai_api_key, query_text):
     # Prepares the system prompt for Bahasa Indonesia responses
-    system_prompt = "Always generate output in Bahasa Indonesia!\n"
+    system_prompt = "Always generate output in Bahasa Indonesia! Output must be no more than 100 words!\n"
     query_text = system_prompt + query_text  # Appending the actual query text to the system prompt
 
     # Path to the document
@@ -26,7 +26,7 @@ def generate_response(openai_api_key, query_text):
         documents = [file.read()]
     
     # Split documents into chunks
-    text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=300)
     texts = text_splitter.create_documents(documents)
     
     # Select embeddings
@@ -53,3 +53,13 @@ if query_text:
     with st.spinner('Sedang mencari jawaban...'):
         response = generate_response(openai_api_key, query_text)
     st.info(response if response else "Mohon maaf saya tidak bisa menjawab pertanyaan tersebut, mohon menanyakan hal yang lain.")
+
+# Display sources
+st.write('\n\n\n') # Add more line spaces
+st.markdown("**The answers are generated from the following sources as of April 25, 2024. / Jawaban dihasilkan dari sumber-sumber berikut, per tanggal 25 April 2024.**")
+st.markdown("* https://immi.homeaffairs.gov.au/what-we-do/whm-program/")
+st.markdown("* https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462")
+st.markdown("* https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/first-work-holiday-462")
+st.markdown("* https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/second-work-holiday-462")
+st.markdown("* https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462/third-work-and-holiday-462")
+st.markdown("* https://indonesia.embassy.gov.au/jakt/visa462.html")
