@@ -13,6 +13,7 @@ from pathlib import Path
 # Access the OpenAI API key from secrets.toml
 openai_api_key = st.secrets["openai"]["api_key"]
 
+# Define the function to generate response using RAG
 def generate_response(openai_api_key, query_text):
     # Prepares the system prompt for Bahasa Indonesia responses
     system_prompt = "Always generate output in Bahasa Indonesia! Output must be no more than 100 words!\n"
@@ -43,18 +44,20 @@ def generate_response(openai_api_key, query_text):
     
     return qa.run(query_text)
 
+# Setup the page title to be displayed on Streamlit
 st.set_page_config(page_title='🇮🇩 Working Holiday Visa 101 🇦🇺')
 st.title('🇮🇩 Working Holiday Visa 101 🇦🇺')
 
+# Setup the input textfield to take questions from user
 query_text = st.text_input('Question / Pertanyaan:', placeholder='Please provide your question here / Masukkan pertanyaan Anda di sini.')
 
-# Process the query
+# Process the query input by users
 if query_text:
     with st.spinner('Sedang mencari jawaban...'):
         response = generate_response(openai_api_key, query_text)
     st.info(response if response else "Mohon maaf saya tidak bisa menjawab pertanyaan tersebut, mohon menanyakan hal yang lain.")
 
-# Display sources
+# Display sources from where the answers will be generated
 st.write('\n\n\n') # Add more line spaces
 st.markdown("**The answers are generated from the following sources as of April 25, 2024. / Jawaban dihasilkan dari sumber-sumber berikut, per tanggal 25 April 2024.**")
 st.markdown("* https://immi.homeaffairs.gov.au/what-we-do/whm-program/")
